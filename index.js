@@ -7,7 +7,7 @@ import database from './database.js';
 import express from 'express';
 
 const app = express();
-const port = 80;
+const port = 3000;
 
 // import { SimpleDateFormat } from '@riversun/simple-date-format';
 // const SimpleDateFormat = require("@riversun/simple-date-format");
