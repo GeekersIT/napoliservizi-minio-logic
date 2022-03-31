@@ -24,6 +24,7 @@ const kcAdminClient = new KcAdminClient.default({
 
 const minioClient = new Minio.Client({
   endPoint: config.minio.url,
+  port: 9000,
   accessKey: config.minio.accessKey,
   secretKey: config.minio.secretKey
 });
