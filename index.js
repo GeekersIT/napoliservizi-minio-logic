@@ -98,6 +98,9 @@ app.post("/file/get", async (req, res) => {
   res.send({ url: url });
 });
 
+app.get("/", async (req, res) => {
+  res.send('up');
+});
 
 
 app.listen(port, () => {
