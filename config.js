@@ -6,10 +6,11 @@ const config = {
         realm: process.env.NAMESPACE,
     },
     db: {
-        url: "hasura."+process.env.NAMESPACE+"/db/v1/graphql",
+        url: "http://hasura."+process.env.NAMESPACE+"/v1/graphql",
     },
     minio: {
         url: "minio."+process.env.NAMESPACE,
+        app: process.env.APP_URI,
         accessKey: process.env.MINIO_ACCESS,
         secretKey: process.env.MINIO_SECRET
     }

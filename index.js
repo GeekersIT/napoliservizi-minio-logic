@@ -24,7 +24,16 @@ const kcAdminClient = new KcAdminClient.default({
 
 const minioClient = new Minio.Client({
   endPoint: config.minio.url,
+  useSSL: false,
   port: 9000,
+  accessKey: config.minio.accessKey,
+  secretKey: config.minio.secretKey
+});
+
+const externalClient = new Minio.Client({
+  endPoint: config.minio.app,
+  // useSSL: false,
+  // port: 9000,
   accessKey: config.minio.accessKey,
   secretKey: config.minio.secretKey
 });
@@ -90,7 +99,7 @@ app.post("/bucket/list", async (req, res) => {
 });
 
 app.post("/file/get", async (req, res) => {
-  let url = await new Promise((resolve, reject) => minioClient.presignedGetObject(req.body.bucket, req.body.name, 24 * 60 * 60, function (err, presignedUrl) {
+  let url = await new Promise((resolve, reject) => externalClient.presignedGetObject(req.body.bucket, req.body.name, 24 * 60 * 60, function (err, presignedUrl) {
     if (err) reject(err)
     resolve(presignedUrl)
   }));
